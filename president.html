@@ -8,34 +8,37 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <label for="pwd">Enter the secret President Name </label>
+    <input type ="password" id="secret_president" name="secret_president"  value= "George Washington"> <br>
+<br>
+    <label for="p">Guess the President </label>
+    <input type ="text" id="guess" name="guess" autofocus> <br>
+<br>
+    <input type="button" onclick="checkGuess()" value="Check the Guess">
 </form>
 
-
-<p id="result">This text will be replaced </p>
+ <p id="result">These are the results</p>
 
 <script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
+ var correct= 0;
+ var wrong = 0;
+function checkGuess (){
+    console.log("Compares the values");
+    pwd = document.getElementById("secret_president").value
+    p = document.getElementById("guess").value
     
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
+    out = document.getElementById("result");
+    out1= document.getElementById("result");
+    if(pwd==p){
+        correct+=1;
+        alert("You got it Right");
+       out.innerHTML = correct;
     } else {
-        out.innerHTML = "Values were not confirmed"
+        wrong+=1;
+        alert("Wrong President");
+    out1.innerHTML = wrong;
     }
 }
 </script>
-
 </body>
 </html> 

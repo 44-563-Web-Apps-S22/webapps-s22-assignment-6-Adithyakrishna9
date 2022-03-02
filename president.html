@@ -17,7 +17,9 @@
     <input type="button" onclick="checkGuess()" value="Check the Guess">
 </form>
 
- <p id="result">These are the results</p>
+ <p>These are the results</p>
+ <button type="button" class="btn btn-success">Correct: <p id="result_c">0</p></button>
+ <button type="button" class="btn btn-danger">Wrong: <p id="result_w">0</p></button>
 
 <script> 
  var correct= 0;
@@ -27,8 +29,8 @@ function checkGuess (){
     pwd = document.getElementById("secret_president").value
     p = document.getElementById("guess").value
     
-    out = document.getElementById("result");
-    out1= document.getElementById("result");
+    out = document.getElementById("result_c");
+    out1= document.getElementById("result_w");
     if(pwd==p){
         correct+=1;
         alert("You got it Right");
@@ -39,6 +41,29 @@ function checkGuess (){
     out1.innerHTML = wrong;
     }
 }
+
+var useImage = 1;
+ function swapImage()
+ {
+     var image = document.getElementById("swapimages");
+    switch(useImage) {
+  case 1:
+        image.src = 'image2.jpg'; useImage = 2;
+    break;
+  case 2:
+        image.src = 'image3.jpg'; useImage = 3;
+    break;
+  case 3:
+        image.src = 'image1.jpg'; useImage = 1;
+    break;
+  default: 
+    break;
+}
+ }
 </script>
+
+<div class="container">
+    <img src="image1.jpg" id="swapimages" height="100" width="100" alt="Red Bullied Pitta" onclick="swapImage()">
+</div>
 </body>
 </html> 

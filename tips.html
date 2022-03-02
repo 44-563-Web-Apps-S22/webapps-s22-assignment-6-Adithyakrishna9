@@ -3,37 +3,66 @@
  
 <body>
 
-<h2>Getting input</h2>
+<h2>Raavi Computes tips</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <label for="amount">Enter a check Amount </label>
+    <input type ="number" id="amount" name="amount"> <br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <label for="tip increase">Enter tip increase</label>
+    <input type ="number" id="tip_increase" name="tip_increase" autofocus> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <input type="button" onclick="tips()" value="Find Tips"> 
 </form>
-
 
 <p id="result">This text will be replaced </p>
 
+<form>
+    <input type="radio" id="rtimes"  value="times"  onclick="chooseOp()">
+    <label for="rtimes">*</label></br>
+  
+    <input type="radio" id="rdivide"  value="divide" onclick="chooseOp()">
+    <label for="rdivide">/</label></br>
+  
+    <input type="radio" id="rExponent" value="Exponent" onclick="chooseOp()">
+    <label for="rExponent">**</label></br>
+ </form>
+
+ <p id="result2">Results of the radio button</p>
 <script> 
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
+function tips (){
+    console.log("Getting form values");
+    amount = document.getElementById("amount").value
+    tip_increase = document.getElementById("tip_increase").value
+    result = "";
+    var tip_amounts = amount/10;
+    result = "Tip amounts by increase of "+tip_increase+"are:"
+    out = document.getElementById("result");
+    for(let index = 0;index < 10; index++)
+    {
+        result +=" "+tip_amounts.toFixed(1);
+        tip_amounts +=(amount*tip_increase);
     }
+    result +=" (amount was "+amount+")";
+    out.innerHTML=result
+};
+
+function chooseOp()
+{
+    console.log("Getting form values")
+    amount = document.getElementById("amount").value
+    tip = document.getElementById("tip_increase").value
+    out2 = document.getElementById("result2")   
+
+    if(document.getElementById("rtimes").checked){
+        out2.innerHTML="<b>(amount * tipIncrease) Value is: </b>"+amount*tip;
+    }else if (document.getElementById("rdivide").checked) {
+        out2.innerHTML="<b>(amount / tipIncrease) Value is: </b>"+amount/tip;
+    }else if(document.getElementById("rExponent").checked){
+        out2.innerHTML="<b>(amount ** tipIncrease) Value is: </b>"+(amount**tip);
+}
 }
 </script>
-
 </body>
 </html> 

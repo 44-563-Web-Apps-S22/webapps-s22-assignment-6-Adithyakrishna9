@@ -12,9 +12,9 @@
     <input type ="password" id="secret_president" name="secret_president"  value= "George Washington"> <br>
 <br>
     <label for="p">Guess the President </label>
-    <input type ="text" id="guess" name="guess" autofocus> <br>
+    <input type ="text" id="guess1" name="guess" autofocus> <br>
 <br>
-    <input type="button" onclick="checkGuess()" value="Check the Guess">
+    <input type="button" onclick="checkGuess()"  id="guess" value="Check the Guess">
 </form>
 
  <p>These are the results</p>
@@ -40,7 +40,14 @@ function checkGuess (){
         alert("Wrong President");
     out1.innerHTML = wrong;
     }
+    if(wrong>=3){
+        document.getElementById("guess").setAttribute("onclick","javascript: gameover();");
+    }    
 }
+function gameover() {
+    alert("Sorry, game over.")
+}
+
 
 var useImage = 1;
  function swapImage()

@@ -23,6 +23,18 @@
 
 <p id="result">This order details that are used for tracking</p>
 
+<form>
+    <label for="property">Enter a property name</label>
+    <input type ="text" id="property" name="property" value=engraved> <br>
+
+    <label for="property_value">Enter a value</label>
+    <input type ="text" id="property_value" name="property_value"> <br>
+
+    <input type="button" onclick="updateComputer()" value="Update the computer">
+</form>
+
+<p id="result2">Your Order details</p>
+
 <script> 
     var my_computer = {}
     function orderComputer (){
@@ -50,6 +62,15 @@
         }
         out.innerHTML="my_computer{"+"\"extra\": "+my_computer.extra+",\"mouse\": "+my_computer.mouse+", \"cell\": "+my_computer.cell+"}";
     }
+
+    function updateComputer() {
+    console.log("Getting form values")
+    property = document.getElementById("property").value
+    value = document.getElementById("property_value").value
+    my_computer[property] = value
+    out2 = document.getElementById("result2")
+    out2.innerHTML="my_computer" + JSON.stringify(my_computer) +"<b>Successfully updated Order details</b>";
+}
 </script>    
 
 </body>

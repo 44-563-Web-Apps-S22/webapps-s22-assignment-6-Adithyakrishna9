@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>This is a computer</title>
+ </head>
+<body>
+
+<h2>Raavi orders a computer</h2>
+
+<form>
+    <label for="extra">Extra Memory</label>
+    <input type ="checkbox" id="extra" name="extra"  value=extra> <br>
+
+    <label for="mouse">Mouse </label>
+    <input type ="checkbox" id="mouse" name="mouse"  value=mouse> <br>
+
+    <label for="cellservice">CellService</label>
+    <input type ="checkbox" id="cellservice" name="cellservice"  value=cell> <br>
+
+    <input type="button" onclick="orderComputer()" value="Order a computer">
+</form>
+
+
+<p id="result">This order details that are used for tracking</p>
+
+<script> 
+    var my_computer = {}
+    function orderComputer (){
+        console.log("Getting form values")
+        memory_check = document.getElementById("extra").checked
+        mouse_check = document.getElementById("mouse").checked
+        cell_check = document.getElementById("cellservice").checked
+        my_computer = {};
+    
+        out = document.getElementById("result")
+        if(memory_check){
+            my_computer.extra = true;
+        } else {
+            my_computer.extra = false;
+        }
+        if(mouse_check){
+            my_computer.mouse = true;
+        } else {
+            my_computer.mouse = false;
+        }
+        if(cell_check){
+            my_computer.cell = true;
+        } else {
+            my_computer.cell = false;
+        }
+        out.innerHTML="my_computer{"+"\"extra\": "+my_computer.extra+",\"mouse\": "+my_computer.mouse+", \"cell\": "+my_computer.cell+"}";
+    }
+</script>    
+
+</body>
+</html> 
